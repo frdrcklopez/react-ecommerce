@@ -1,7 +1,7 @@
-import './navigation.styles.scss'
 import { useContext } from 'react'
 import {  Outlet, Link } from 'react-router-dom'
 
+import { NavigationContainer, LogoContainer, NavLinksContainer, NavLinks } from './navigation.styles.jsx'
 import { UserContext } from '../../contexts/user.context'
 import { CartContext } from '../../contexts/cart.context'
 import CartIcon from '../../components/cart-icon/cart-icon.component'
@@ -20,22 +20,31 @@ const Navigation = () => {
 
     return (
         <>
-            <div className='navigation'>
-                <Link className='logo-container' to='/'>
+            <NavigationContainer>
+                <LogoContainer to='/'>
                     <CrwnLogo className='logo'/>
-                </Link>
-                <div className='nav-links-container'>
+                </LogoContainer>
+                <NavLinksContainer>
                     <Link className='nav-link' to='/shop'>
                         SHOP
                     </Link>
                     {currentUser 
-                        ? <span className='nav-link' onClick={signOutHandler}>SIGN OUT</span>
-                        : <Link className='nav-link' to='/auth'> SIGN IN </Link>
+                        ? <NavLinks 
+                            as="span" 
+                            onClick={signOutHandler}
+                        >
+                            SIGN OUT
+                        </NavLinks>
+                        : <NavLinks 
+                            to='/auth'
+                        > 
+                            SIGN IN 
+                        </NavLinks>
                     }
                     <CartIcon />
-                </div>
+                </NavLinksContainer>
                 {isCartOpen && <CartDropdown/>}
-            </div>
+            </NavigationContainer>
             <Outlet />
         </>
     )
