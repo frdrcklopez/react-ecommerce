@@ -3,7 +3,7 @@ import {  Outlet, Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 import { selectCurrentUser } from '../../store/user/user.selector'
-import { CartContext } from '../../contexts/cart.context'
+import { selectIsCartOpen } from '../../store/cart/cart.selector'
 import { 
     NavLinks, 
     LogoContainer, 
@@ -18,7 +18,7 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
 
 const Navigation = () => {
     const currentUser = useSelector(selectCurrentUser)
-    const { isCartOpen } = useContext(CartContext)
+    const isCartOpen = useSelector(selectIsCartOpen)
 
     const signOutHandler = async() =>{
         await signOutUser()
