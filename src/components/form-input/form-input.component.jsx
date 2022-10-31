@@ -1,0 +1,22 @@
+import {
+    Group, 
+    Input,
+    FormInputLabel 
+} from './form-input.styles.jsx'
+
+const FormInput = ({ label, inputOptions }) => {
+    return (
+        <Group>
+            <Input { ...inputOptions} />
+            { label  && (
+                <FormInputLabel
+                    shrink={inputOptions.value.length ? 'shrink' : ''}
+                >   
+                    {label}
+                </FormInputLabel>
+            )}
+        </Group>
+    );
+}
+ 
+export default FormInput;
