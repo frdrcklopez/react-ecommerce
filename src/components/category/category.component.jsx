@@ -9,7 +9,7 @@ import {
 import { 
     selectCategoriesMap, 
     selectCategoriesIsLoading 
-} from '../../store/categories/category.selector.js'
+} from '../../store/categories/category.selector.ts'
 import ProductCard from '../product-card/product-card.component'
 import Spinner from '../spinner/spinner.component.jsx'
 
