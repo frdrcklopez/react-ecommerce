@@ -3,7 +3,6 @@ import {
     Category, 
 } from './category.types'
 import { 
-    CategoryAction,
     fetchCategoriesStart,
     fetchCategoriesSuccess,
     fetchCategoriesFailed
