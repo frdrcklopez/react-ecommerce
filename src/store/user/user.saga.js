@@ -16,7 +16,7 @@ import {
     createAuthUserWithEmailAndPassword,
     signOutUser,
 } from '../../utils/firebase/firebase.utils'
-import USER_ACTION_TYPES from './user.types'
+import { USER_ACTION_TYPES } from './user.types'
 
 export function* getSnapshotFromUserAuth(userAuth, additionalDetails) {
     try {
