@@ -9,7 +9,7 @@ import {
     LogoContainer, 
     NavLinksContainer, 
     NavigationContainer,
-} from './navigation.styles.jsx'
+} from './navigation.styles'
 import CartIcon from '../../components/cart-icon/cart-icon.component'
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component'
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
