@@ -1,14 +1,14 @@
-import * as React from 'react'
+import { useState, FormEvent, ChangeEvent } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { 
+import {  
     googleSignInStart,
     emailSignInStart
 } from '../../store/user/user.action'
 import { 
     SignInContainer, 
     ButtonsContainer 
-} from './sign-in-form.styles.jsx'
+} from './sign-in-form.styles'
 import FormInput from '../form-input/form-input.component'
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component'
 
@@ -20,7 +20,7 @@ const defaultFormFields = {
 
 const SignInForm = () => {
     const dispatch = useDispatch()
-    const [formFields, setFormFields] = React.useState(defaultFormFields)
+    const [formFields, setFormFields] = useState(defaultFormFields)
     const { email, password } = formFields
 
     const resetFormField = () => {
@@ -31,28 +31,19 @@ const SignInForm = () => {
         dispatch(googleSignInStart())
     }
 
-    const handleSubmit = async (event) =>{
+    const handleSubmit = async (event : FormEvent<HTMLFormElement>) =>{
         event.preventDefault()
 
         try{
             dispatch(emailSignInStart(email, password))
-
             resetFormField()
         }catch(error){
-            switch(error.code) {
-                case 'auth/wrong-password' :
-                    alert(`Invalid password`)
-                    break
-                case 'auth/user-not-found' :
-                    alert(`User Email not found`)
-                    break
-                default :
-                    console.log('User created encoutered an error', error)
-            }
+            alert(`User sign in failed`)
+            console.log('User created encoutered an error', error)
         }
     }
 
-    const handleChange = (event) => {
+    const handleChange = (event : ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target
         setFormFields({...formFields, [name] : value})
     }
